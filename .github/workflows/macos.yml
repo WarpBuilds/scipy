@@ -1,13 +1,7 @@
 name: macOS tests
 
 on:
-  push:
-    branches:
-      - maintenance/**
-  pull_request:
-    branches:
-      - main
-      - maintenance/**
+  workflow_dispatch:
 
 permissions:
    contents: read  # to fetch code (actions/checkout)
@@ -33,7 +27,7 @@ jobs:
     if: >
       needs.get_commit_message.outputs.message == 1
       && (github.repository == 'scipy/scipy' || github.repository == '')
-    runs-on: macos-latest
+    runs-on: warpdev-macos-14-arm64-3x
     strategy:
       matrix:
         python-version: ["3.11"]
@@ -145,7 +139,7 @@ jobs:
     if: >
       needs.get_commit_message.outputs.message == 1
       && (github.repository == 'scipy/scipy' || github.repository == '')
-    runs-on: macos-14
+    runs-on: warpdev-macos-14-arm64-3x
     strategy:
       matrix:
         python-version: ["3.11"]
@@ -190,7 +184,7 @@ jobs:
     if: >
       needs.get_commit_message.outputs.message == 1
       && (github.repository == 'scipy/scipy' || github.repository == '')
-    runs-on: macos-14
+    runs-on: warpdev-macos-14-arm64-3x
     strategy:
       matrix:
         python-version: ["3.11"]
