@@ -15,18 +15,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  get_commit_message:
-    name: Get commit message
-    uses: ./.github/workflows/commit_message.yml
 
   test_meson:
     name: Conda & umfpack/scikit-sparse, fast, py3.11/npAny, dev.py
-    needs: get_commit_message
     # If using act to run CI locally the github object does not exist and
     # the usual skipping should not be enforced
-    if: >
-      needs.get_commit_message.outputs.message == 1
-      && (github.repository == 'scipy/scipy' || github.repository == '')
     runs-on: warpdev-macos-14-arm64-3x
     strategy:
       matrix:
@@ -133,12 +126,6 @@ jobs:
 
   test_scipy_openblas:
     name: M1 & OpenBLAS, fast, py3.11/npAny, dev.py
-    needs: get_commit_message
-    # If using act to run CI locally the github object does not exist and
-    # the usual skipping should not be enforced
-    if: >
-      needs.get_commit_message.outputs.message == 1
-      && (github.repository == 'scipy/scipy' || github.repository == '')
     runs-on: warpdev-macos-14-arm64-3x
     strategy:
       matrix:
@@ -178,12 +165,6 @@ jobs:
 
   test_meson_accelerate:
     name: Accelerate, fast, py3.11/npAny, dev.py
-    needs: get_commit_message
-    # If using act to run CI locally the github object does not exist and
-    # the usual skipping should not be enforced
-    if: >
-      needs.get_commit_message.outputs.message == 1
-      && (github.repository == 'scipy/scipy' || github.repository == '')
     runs-on: warpdev-macos-14-arm64-3x
     strategy:
       matrix:
