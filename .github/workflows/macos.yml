@@ -20,7 +20,7 @@ jobs:
     name: Conda & umfpack/scikit-sparse, fast, py3.11/npAny, dev.py
     # If using act to run CI locally the github object does not exist and
     # the usual skipping should not be enforced
-    runs-on: warpdev-macos-14-arm64-3x
+    runs-on: warp-macos-14-arm64-3x
     strategy:
       matrix:
         python-version: ["3.11"]
@@ -126,7 +126,7 @@ jobs:
 
   test_scipy_openblas:
     name: M1 & OpenBLAS, fast, py3.11/npAny, dev.py
-    runs-on: warpdev-macos-14-arm64-3x
+    runs-on: warp-macos-14-arm64-3x
     strategy:
       matrix:
         python-version: ["3.11"]
@@ -165,7 +165,7 @@ jobs:
 
   test_meson_accelerate:
     name: Accelerate, fast, py3.11/npAny, dev.py
-    runs-on: warpdev-macos-14-arm64-3x
+    runs-on: warp-macos-14-arm64-3x
     strategy:
       matrix:
         python-version: ["3.11"]
